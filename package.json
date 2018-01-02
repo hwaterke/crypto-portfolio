@@ -1,0 +1,41 @@
+{
+  "name": "crypto-portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "chalk": "^2.3.0",
+    "gdax": "coinbase/gdax-node",
+    "lodash": "^4.17.4",
+    "table": "^4.0.2"
+  },
+  "scripts": {
+    "prebuild": "rm -r build || true",
+    "dev": "nodemon src/index.js --exec babel-node src/index.js",
+    "build": "babel src --copy-files --out-dir build",
+    "format":
+      "prettier --single-quote --bracket-spacing=false --no-semi --write 'src/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.14.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --bracket-spacing=false --no-semi",
+      "eslint --max-warnings 1",
+      "git add"
+    ],
+    "*.{css,scss,json,md}": ["prettier --write", "git add"]
+  }
+}
